@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 
+
+const  filepath = "uploads/files"
+
 const personSchema = new mongoose.Schema({
 
     title:{
@@ -46,3 +49,5 @@ const personSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("Person", personSchema)
+
+module.exports.filepath = filepath
