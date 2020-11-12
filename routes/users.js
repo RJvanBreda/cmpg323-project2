@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../models/user')
 
 //all
 router.get('/', (req, res) => {
-    res.render('user/index')
+    res.render('users/index')
 })
 
 
@@ -11,12 +12,12 @@ router.get('/', (req, res) => {
 
 //new 
 router.get('/new', (req, res) => {
-    res.render('user/new', { author: new Author() })
+    res.render('users/new', {user: new User()})
   })
 
-//create user
+//create user route
 router.post('/', (req, res) => {
-    res.send('create')
+    res.send('Create')
 })
     
     
