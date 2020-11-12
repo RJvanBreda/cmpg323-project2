@@ -27,20 +27,7 @@ const personSchema = new mongoose.Schema({
         default: Date.now
     },
 
-    fileUpload:{
-        type: String,
-         
-        default: Date.now
-    },
-
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-         required: true,
-         ref: 'User'
-    },
-
-
 
 })
 
-module.exports = mongoose.model("person", personSchema)
+module.exports = mongoose.model("person", personchema)
