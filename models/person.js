@@ -27,6 +27,21 @@ const personSchema = new mongoose.Schema({
         default: Date.now
     },
 
+    file:{
+        type: String,
+        required: true,   
+        
+    },
+
+    author:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,   
+        ref: 'User'
+        
+    },
+
+
+
 
 })
 
