@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 
-//all
+//all users
 router.get('/', (req, res) => {
     res.render('users/index')
 })
@@ -15,9 +15,31 @@ router.get('/new', (req, res) => {
     res.render('users/new', {user: new User()})
   })
 
+
+
 //create user route
-router.post('/', (req, res) => {
-    res.send('Create')
+router.post('/', async (req, res) => {
+    const user = new User({
+        name: req.body.name
+
+    })
+
+    try{
+            const newUser = await user.save()
+           // res.redirect(`users/${newUser.id}`)
+            res.redirect(`users`)
+    }
+    catch {
+        res.render('users/new', {
+
+            user: user,
+            errorMessage: 'error creating user'
+        })
+
+    }
+    
+
+    
 })
     
     
