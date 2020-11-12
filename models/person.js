@@ -33,7 +33,7 @@ const personSchema = new mongoose.Schema({
         
     },
 
-    author:{
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,   
         ref: 'User'
@@ -45,4 +45,4 @@ const personSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model("person", personchema)
+module.exports = mongoose.model("Person", personSchema)

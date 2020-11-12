@@ -1,0 +1,14 @@
+<lable>Title</lable>
+<input type="text" name="title" value="<%=person.title%>">
+
+
+<label>user</label>
+  <select name="user">
+  <% users.forEach(user => { %>
+    <% if (user.id === person.user) { %>
+      <option selected label="<%= user.name %>" value="<%= user.id %>">
+    <% } else { %>
+      <option label="<%= user.name %>" value="<%= user.id %>">
+    <% } %>
+  <% }) %>
+  </select>
