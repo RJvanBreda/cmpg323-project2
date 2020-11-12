@@ -1,7 +1,10 @@
-<lable>Title</lable>
-<input type="text" name="title" value="<%=person.title%>">
+<div>
 
+        <lable>Title</lable>
+        <input type="text" name="title" value="<%=person.title%>">
+</div>
 
+<div>
 <label>user</label>
   <select name="user">
   <% users.forEach(user => { %>
@@ -12,3 +15,31 @@
     <% } %>
   <% }) %>
   </select>
+</div>
+
+<div>
+    <lable>Date of birth</lable>
+    <input type="date" name="Datebirth" 
+    value="<%=person.Datebirth==null ? '' : 
+    person.Datebirth.toISOString().split('T')[0]%>">
+</div>
+
+<div>
+    <lable>ID</lable>
+    <input type="number" name="ID" value="<%=person.ID %>">
+</div>
+
+
+<div>
+    <lable>Cell phone number</lable>
+    
+    <input type="number" name="Cellphone" value="<%=person.Cellphone %>">
+</div>
+
+<div>
+    <lable>File</lable>
+    <input type="file" name="file" %>">
+</div>
+
+
+
