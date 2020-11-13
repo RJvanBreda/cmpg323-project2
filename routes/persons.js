@@ -99,19 +99,12 @@ router.post('/', upload.single('cover'), async (req, res) => {
     renderNewPAge(res, person, true)
 
   }
-  
+   
+
     
-})
+    
 
-
-router.get('/:id', async (req, res)=>{
-  try{
-    const person = await (await Person.findById(req,params.id)).populated('user').exec()
-    res.render('persons/show', {person: person})
-  }
-  catch{
-      res.redirect('/')
-  }
+    
 })
     
     
