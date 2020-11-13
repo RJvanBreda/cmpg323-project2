@@ -1,0 +1,37 @@
+<h2>Search for person</h2>
+<form action="/persons" method="GET">
+<div>
+<label>Titel</label>
+    <input type="text" name="title" value= "<%=searchOptions.title %>">
+    
+</div>
+
+
+<label>Birth Date</label>
+    <input type="date" name=" Datebirth" value= "<%=searchOptions. Datebirth %>">
+</div>
+
+
+<div>
+    <label>ID</label>
+        <input type="number" name="Ident" value= "<%=searchOptions.Ident %>">
+        
+    </div>
+
+    <div>
+        <label>user</label>
+            <input type="text" name="user" value= "<%=searchOptions.user %>">
+            
+        </div>
+        <button type="submit">Search</button>
+
+</form>
+<br>
+<div>
+    <% persons.forEach(person => { %>
+        <img height="150" width="100" src="<%= person.coverImagePath %>">
+      <% }) %>
+    </div>
+
+    
+    
