@@ -21,8 +21,16 @@ const upload = multer({
 //all users
 router.get('/', async (req, res) => {
 
+  let query = Person.find()
+  if (req.query.title !=null && req.query.title != '' ) {
+    query = query.regex('title', RegExp(req.query.title, 'i'))
+  }
+  //if (req.query.Datebirth !=null && req.query.Datebirth != '' ) {
+  //  query. query.lte('Datebirth', req,query.Datebirth)
+  //}
+
   try {
-    const persons = await Person.find({})
+    const persons = await query.exec({})
     res.render('persons/index', {
       persons:persons,
       searchOptions:req.query
@@ -129,6 +137,9 @@ catch{
 
 
 }
+
+
+
 
 
 module.exports = router
