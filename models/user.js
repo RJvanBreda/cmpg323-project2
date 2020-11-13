@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Person = require('./person')
 
 const userSchema = new mongoose.Schema({
 
@@ -8,4 +9,16 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+userSchema.pre('remove', function(next) {
+    Person.find({user: this.id}, (err, persons) => {
+        if (err) {
+            next (err)
+        } else if (persons.length > 0) {
+            persons.forEach(person => person.remove())
+            next()
+        } else {
+            next()
+        }
+    })
+})
 module.exports = mongoose.model("User", userSchema)
