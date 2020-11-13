@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const Person = require('../models/person')
 
 //all users
 router.get('/', async (req, res) => {
@@ -40,8 +41,8 @@ router.post('/', async (req, res) => {
 
     try{
             const newUser = await user.save()
-           // res.redirect(`users/${newUser.id}`)
-            res.redirect(`users`)
+           res.redirect(`users/${newUser.id}`)
+            //res.redirect(`users`)
     }
     catch {
         res.render('users/new', {
@@ -60,7 +61,81 @@ router.post('/', async (req, res) => {
 
 
 
+router.get('/:id', async (req, res) => {
+    res.send('show User - ' + req.params.id)
+    
+    /*try {
+            const user = await User.findById(req.params.id)
+           // const  persons = await Person.find({user: user.id})
+            res.render ('users/show', {
+                user: user,
+               // userdetailsare: persons
+            })
 
+    }
+    catch {
+        
+            res.redirect('/')
+    }
+    
+*/
+})
 
+router.get('/:id/edit',  async(req, res) =>{
 
+    try {
+        const user = await User.findById(req.params.id)
+        res.render('users/edit', {user: user})
+    }
+    catch {
+            res.redirect('/users')
+    }
+
+    
+})
+
+router.put('/:id', async (req, res) =>{
+    let user
+    
+
+    try{
+        user = await User.findById(req.params.id)
+        user.name = req.body.name
+            await user.save()
+          // res.redirect(`users/${newUser.id}`)
+           res.redirect(`/users/${user.id}`)
+    }
+    catch {
+        if (user == null) {
+
+            res.redirect('/')
+        } else {
+        res.render('users/edit', {
+
+            user: user,
+            errorMessage: 'error updating user'
+        
+        })
+
+    }
+}
+    //res.send('update User' + req.params.id)
+})
+
+router.delete('/:id', async (req, res) => {
+    let user
+    try {
+      user = await User.findById(req.params.id)
+      await user.remove()
+      res.redirect('/users')
+    } catch {
+      if (user == null) {
+        res.redirect('/users')
+      } else {
+        res.redirect(`/users/${user.id}`)
+      }
+    }
+  })
+  
 module.exports = router
+
