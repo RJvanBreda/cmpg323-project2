@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     
     let persons
     try{
-            persons = await person.find().sort({createdAt: 'desc'}).limit(5).exec()
+            persons = await person.find()
             
     }
     catch{

@@ -7,4 +7,14 @@
 <br>
 <% users.forEach(user => { %>
     <div><%=user.name %></div>
+
+
+    <a href="/users/<%= user.id %>">View</a>
+    <a href="/users/<%= user.id %>/edit">Edit</a>
+
+    <%- include('../partials/deleteForm', {url: "/users/<%= user.id %>"}) %>
+
+    <form method="POST" action = "/users/<%= user.id %>?_method=DELETE">
+        <button type submit> Delete</button>
+    </form>
     <%})%>

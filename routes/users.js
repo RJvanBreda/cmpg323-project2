@@ -60,7 +60,22 @@ router.post('/', async (req, res) => {
 
 
 
+router.get('/:id', (req, res) => {
+    res.send('show User' + req.params.id)
 
 
+})
 
+router.get('/:id/edit', (req, res) =>{
+
+    res.send('edit User' + req.params.id)
+})
+
+router.put('/:id', (req, res) =>{
+    res.send('update User' + req.params.id)
+})
+
+router.delete('/:id', (req, res) =>{
+    res.send('Delete User' + req.params.id)
+})
 module.exports = router
