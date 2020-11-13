@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const path = require('path')
+
 const coverImageBasePath = 'uploads/bookCovers'
 
 const personSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const personSchema = new mongoose.Schema({
         required: true   
     },
     
-    Ident:{
+    ID:{
         type: Number,
         required: true   
     },
@@ -45,14 +45,6 @@ const personSchema = new mongoose.Schema({
 
 
 
-})
-
-personSchema.virtual('coverImagePath').get(function(){
-
-    if (this.coverImageName!=null)
-    {
-            return path.join('/', coverImageBasePath, this.coverImageName)
-    }
 })
 
 module.exports = mongoose.model("Person", personSchema)

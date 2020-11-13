@@ -6,13 +6,13 @@ const fs = require('fs')
 const User = require('../models/user')
 const Person = require('../models/person')
 const uploadPath = path.join('public', Person.coverImageBasePath)
-const fileTypes = ['image/jpgeg', 'image/png' , 'xlsx']
+const imageMimeTypes = ['image/jpgeg', 'image/png']
 
 const upload = multer({
   dest: uploadPath,
   fileFilter:(req, file, callback) => {
 
-    callback(null, fileTypes.includes(file.mimetype)) 
+    callback(null, imageMimeTypes.includes(file.mimetype)) 
   }
 
 })
@@ -20,30 +20,7 @@ const upload = multer({
 
 //all users
 router.get('/', async (req, res) => {
-
-  let query = Person.find()
-  if (req.query.title !=null && req.query.title != '' ) {
-    query = query.regex('title', RegExp(req.query.title, 'i'))
-  }
-  //if (req.query.Datebirth !=null && req.query.Datebirth != '' ) {
-  //  query. query.lte('Datebirth', req,query.Datebirth)
-  //}
-
-  try {
-    const persons = await query.exec({})
-    res.render('persons/index', {
-      persons:persons,
-      searchOptions:req.query
-
-    })
-
-
-  }
-  catch 
-  {
-    res.redirect('/')
-  }
-    
+    res.send("all")
     
 })
 
@@ -77,7 +54,7 @@ router.post('/', upload.single('cover'), async (req, res) => {
     title: req.body.title,
     user: req.body.user,
     Datebirth: new Date(req.body.Datebirth),
-    Ident: req.body.Ident,
+    ID: req.body.ID,
     coverImageName: fileName,
     Cellphone: req.body.Cellphone
 
@@ -91,11 +68,6 @@ router.post('/', upload.single('cover'), async (req, res) => {
   }
 
   catch {
-    if (person.coverImageName!=null)
-    {
-      removefile(person.coverImageName)
-    }
-    
     renderNewPAge(res, person, true)
 
   }
@@ -108,13 +80,6 @@ router.post('/', upload.single('cover'), async (req, res) => {
 })
     
     
-function removefile(fileName)
-{
-  fs.unlink(path.join(uploadPath.fileName), err =>
-  {
-    if(err) console.error(err)
-  })
-}
 
 
 
@@ -137,9 +102,6 @@ catch{
 
 
 }
-
-
-
 
 
 module.exports = router
