@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const coverImageBasePath = 'uploads/bookCovers'
+
 const personSchema = new mongoose.Schema({
 
     title:{
@@ -27,7 +29,7 @@ const personSchema = new mongoose.Schema({
         default: Date.now
     },
 
-    file:{
+    coverImageName:{
         type: String,
         required: true,   
         
@@ -46,3 +48,4 @@ const personSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("Person", personSchema)
+module.exports.coverImageBasePath = coverImageBasePath
