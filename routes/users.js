@@ -36,7 +36,7 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     const user = new User({
       name: req.body.fname,
-      Cellphone: req.body.Cellphone
+      Cellphone: req.body.cCellphone
     })
     try {
       const newAuthor = await user.save()

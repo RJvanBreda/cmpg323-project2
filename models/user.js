@@ -6,8 +6,15 @@ const userSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
-    }
+    },
+    Cellphone:{
+        type: Number,
+        required: true
+        
+    },
 })
+
+
 
 userSchema.pre('remove', function(next) {
     Person.find({user: this.id}, (err, persons) => {
