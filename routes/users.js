@@ -35,7 +35,8 @@ router.get('/new', (req, res) => {
 //create user route
 router.post('/', async (req, res) => {
     const user = new User({
-        name: req.body.name
+        name: req.body.fname,
+       
 
     })
 
@@ -52,10 +53,11 @@ router.post('/', async (req, res) => {
         })
 
     }
-    
-
-    
+     
 })
+
+
+
     
     
 
