@@ -1,0 +1,35 @@
+:root{
+    font-family: 'Gotham Rounded';
+    font-size: 20px;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body{
+    color: rgb(255, 255, 255);
+    background-color: #515C8B;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
+
+}
+
+.container {
+
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
+
+}
+
+.headertitle{
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+}
+
+.headerlink{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
