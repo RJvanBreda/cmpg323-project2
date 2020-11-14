@@ -9,12 +9,33 @@ const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
 
+const flash = require('express-flash')
+const session = require('express-session')
+
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const uname = []
 
 
+const initializePassport = require('./passport-config')
+initializePassport(passport, email => uname.find(user => user.email === email)
+)
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave:false,
+  saveUnitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(express.urlencoded({extended: false}))
+
+app.get('/',checkAuthenticated, (req, res) => {
+  res.render('index.ejs')
+})
+
 
 app.get('/login', (req, res) => {
   res.render('login.ejs')
@@ -78,6 +99,14 @@ app.use('/persons', personRouter)
 
 
 
+function checkAuthenticated(req, res, next)
+{
+
+  if(req.isAuthenticated()) {
+    return res.redirect('/index.ejs')
+  }
+  res.redirect('/login')
+}
 
 
 
