@@ -6,7 +6,7 @@ const fs = require('fs')
 const User = require('../models/user')
 const Person = require('../models/person')
 const uploadPath = path.join('public', Person.coverImageBasePath)
-const fileTypes = ['image/jpgeg', 'image/png' , 'xlsx']
+const fileTypes = ['xlsx']
 
 const upload = multer({
   dest: uploadPath,
@@ -71,7 +71,7 @@ router.get('/new', async (req, res) => {
 
 
 //create user route
-router.post('/', upload.single('cover'), async (req, res) => {
+router.post('/', async (req, res) => {
   const fileName = req.file != null ? req.file.filename:null
   const person = new Person ({
     title: req.body.title,

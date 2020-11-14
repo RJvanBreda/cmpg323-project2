@@ -1,12 +1,16 @@
 <h2>You can search for a specific user</h2>
 <form action="/users" method="GET">
-<label>name</label>
+<label>Type name:</label>
 <input type="text" name="name" value= "<%=searchOptions.name %>">
+
 <button type="submit">Search</button>
 </form>
 <br>
+<label>Display:</label>
+<br>
 <% users.forEach(user => { %>
     <div><%=user.name %></div>
+    
 
 
     <a href="/users/<%= user.id %>">View</a>
