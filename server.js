@@ -56,15 +56,15 @@ app.get('/login', (req,res)=> {
 
 
 
-app.post('/login', passport.authenticate('local', {
+/*app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash:true
 
 
-}))
+}))*/
 
-app.get('/register', (req, res) => {
+/*app.get('/register', (req, res) => {
   res.render('register.ejs')
 })
 
@@ -84,7 +84,7 @@ app.post('/register', async (req, res) => {
   }
     console.log(uname)
 })
-
+*/
 
 
 
