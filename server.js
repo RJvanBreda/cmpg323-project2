@@ -9,23 +9,23 @@ const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
 
-/*const flash = require('express-flash')
+const flash = require('express-flash')
 const session = require('express-session')
-*/
+
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const uname = [] 
 
 
-/*const initializePassport = require('./passport-config')
+const initializePassport = require('./passport-config')
 initializePassport(passport, email => uname.find(user => user.email === email)
 )
-app.use(flash())
+//app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave:false,
   saveUnitialized: false
-}))*/
+}))
 
 app.use(passport.initialize())
 app.use(passport.session())
