@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
 
+const passport = require('passport')
 const bcrypt = require('bcrypt')
 const uname = []
 
