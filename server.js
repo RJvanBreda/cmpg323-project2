@@ -32,9 +32,9 @@ app.use(passport.session())
 
 app.use(express.urlencoded({extended: false}))
 
-app.get('/',checkAuthenticated, (req, res) => {
-  res.render('index.ejs')
-})
+//app.get('/',checkAuthenticated, (req, res) => {
+ // res.render('index.ejs')
+//})
 
 
 app.get('/login', (req, res) => {
@@ -99,7 +99,7 @@ app.use('/persons', personRouter)
 
 
 
-function checkAuthenticated(req, res, next)
+/*function checkAuthenticated(req, res, next)
 {
 
   if(req.isAuthenticated()) {
@@ -108,6 +108,6 @@ function checkAuthenticated(req, res, next)
   res.redirect('/login')
 }
 
-
+*/
 
 app.listen(process.env.PORT || 3000)
