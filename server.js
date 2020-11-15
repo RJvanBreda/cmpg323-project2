@@ -3,8 +3,7 @@ if(process.env.NODE_ENV !== 'production') {
   }
 
 
-const express = require ('express')
-const app = express()
+
 const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
@@ -120,4 +119,3 @@ function checkAuthenticated(req, res, next) {
 }
 */
 
-app.listen(process.env.PORT || 3000)
