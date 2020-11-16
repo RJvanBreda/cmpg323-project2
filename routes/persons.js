@@ -5,8 +5,8 @@ const path = require('path')
 const fs = require('fs')
 const User = require('../models/user')
 const Person = require('../models/person')
-const uploadPath = path.join('public', Person.coverImageBasePath)
-const fileTypes = ['image/jpgeg', 'image/png' , 'xlsx']
+const uploadPath = path.join('public', Person. fileBasePath)
+const fileTypes = [ 'xlsx']
 
 const upload = multer({
   dest: uploadPath,
