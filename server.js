@@ -23,6 +23,21 @@ initializePassport(
   email => uname.find(user => user.email === email),
   id => uname.find(user => user.id === id)
 )
+
+
+const indexRouter = require('./routes/index')
+const userRouter = require('./routes/users')
+const personRouter = require('./routes/persons')
+
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts)
+app.use(methodOverride('_method'))
+app.use(express.static('public'))
+app.use(bodyparser.urlencoded({limit: '10mb', extended: false}))
+
+const mongoose = require('mongoose')
 /*app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -77,19 +92,7 @@ app.post('/register', async (req, res) => {
 
 
 
-const indexRouter = require('./routes/index')
-const userRouter = require('./routes/users')
-const personRouter = require('./routes/persons')
 
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
-app.use(methodOverride('_method'))
-app.use(express.static('public'))
-app.use(bodyparser.urlencoded({limit: '10mb', extended: false}))
-
-const mongoose = require('mongoose')
 
 
 mongoose.connect(process.env.DATABASE_URL, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex : true})
