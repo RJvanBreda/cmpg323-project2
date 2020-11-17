@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Person = require('./person')
 
+
+//database
 const userSchema = new mongoose.Schema({
 
     name:{

@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const fileBasePath = 'uploads/files'
 
+//database
 const personSchema = new mongoose.Schema({
 
     title:{
