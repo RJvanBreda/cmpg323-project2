@@ -78,7 +78,7 @@ router.post('/', upload.single('cover'), async (req, res) => {
     user: req.body.user,
     Datebirth: new Date(req.body.Datebirth),
     Ident: req.body.Ident,
-    coverImageName: fileName,
+    Filebasename: fileName,
     Cellphone: req.body.Cellphone
 
   }
@@ -91,9 +91,9 @@ router.post('/', upload.single('cover'), async (req, res) => {
   }
 
   catch {
-    if (person.coverImageName!=null)
+    if (person.Filebasename!=null)
     {
-      removefile(person.coverImageName)
+      removefile(person.Filebasename)
     }
     
     renderNewPAge(res, person, true)
@@ -128,17 +128,12 @@ async function renderNewPAge(res, person, hasError = false) {
     if (hasError) params.errorMessage = 'error creating '
 
     res.render('persons/new', params) 
-
 }
 catch{
   res.redirect('/persons')
 }
 
-
-
 }
-
-
 
 
 

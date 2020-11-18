@@ -43,11 +43,11 @@ const personSchema = new mongoose.Schema({
 
 })
 
-personSchema.virtual('coverImagePath').get(function(){
+personSchema.virtual('fileBasePath').get(function(){
 
-    if (this.coverImageName!=null)
+    if (this.Filebasename!=null)
     {
-            return path.join('/',  fileBasePath, this.coverImageName)
+            return path.join('/',  fileBasePath, this.Filebasename)
     }
 })
 
