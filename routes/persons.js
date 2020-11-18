@@ -17,7 +17,6 @@ const upload = multer({
 
 })
 
-
 //all users
 router.get('/', async (req, res) => {
 
@@ -36,17 +35,12 @@ router.get('/', async (req, res) => {
       searchOptions:req.query
 
     })
-
-
   }
   catch 
   {
     res.redirect('/')
-  }
-    
-    
+  }  
 })
-
 
 
 
@@ -70,8 +64,8 @@ router.get('/new', async (req, res) => {
 
 
 
-//create user route
-router.post('/', upload.single('cover'), async (req, res) => {
+//create user route, allows file to upload
+router.post('/', upload.single('excfile'), async (req, res) => {
   const fileName = req.file != null ? req.file.filename:null
   const person = new Person ({
     title: req.body.title,
@@ -80,7 +74,6 @@ router.post('/', upload.single('cover'), async (req, res) => {
     Ident: req.body.Ident,
     Filebasename: fileName,
     Cellphone: req.body.Cellphone
-
   }
   )
   try{
@@ -102,12 +95,9 @@ router.post('/', upload.single('cover'), async (req, res) => {
    
 
     
-    
-
-    
 })
     
-    
+    //remove file
 function removefile(fileName)
 {
   fs.unlink(path.join(uploadPath.fileName), err =>
@@ -115,7 +105,6 @@ function removefile(fileName)
     if(err) console.error(err)
   })
 }
-
 
 
 async function renderNewPAge(res, person, hasError = false) {
@@ -134,7 +123,6 @@ catch{
 }
 
 }
-
 
 
 module.exports = router
