@@ -1,5 +1,5 @@
 
-
+//Luhn algorithm for ID number
 function Validate() {
     $('#error p').remove();
     var error = $('#error');
@@ -7,7 +7,7 @@ function Validate() {
     var correct = true;
 
     if (IdentNR.length != 13 || !isNumber(IdentNR)) {
-        error.append('<p>ID number does not appear to be authentic - input not a valid number</p>');
+        error.append('ID number does not appear to be valid number');
         correct = false;
     }
     // Date validate
@@ -15,11 +15,10 @@ function Validate() {
     var date_id = tmpDate.getDate();
     var month_id = tmpDate.getMonth();
     var year_id = tmpDate.getFullYear();
-
     var fullDate = date_id + "-" + (month_id + 1) + "-" + year_id;
 
     if (!((tmpDate.getYear() == IdentNR.substring(0, 2)) && (month_id == IdentNR.substring(2, 4) - 1) && (date_id == IdentNR.substring(4, 6)))) {
-        error.append('<p>ID number does not appear to be authentic - date part not valid</p>');
+        error.append('ID number does not appear to be  valid');
         correct = false;
     }
 
@@ -33,19 +32,19 @@ function Validate() {
 
     
     // Luhn formula 
-    var tempTotal = 0;
+    var tempTtal = 0;
     var checkSum = 0;
     var multiplier = 1;
     for (var i = 0; i < 13; ++i) {
-        tempTotal = parseInt(IdentNR.charAt(i)) * multiplier;
-        if (tempTotal > 9) {
-            tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+        tempTtal = parseInt(IdentNR.charAt(i)) * multiplier;
+        if (tempTtal > 9) {
+            tempTtal = parseInt(tempTtal.toString().charAt(0)) + parseInt(tempTtal.toString().charAt(1));
         }
-        checkSum = checkSum + tempTotal;
+        checkSum = checkSum + tempTtal;
         multiplier = (multiplier % 2 == 0) ? 1 : 2;
     }
     if ((checkSum % 10) != 0) {
-        error.append('<p>ID number does not appear to be authentic - check digit is not valid</p>');
+        error.append('ID number does not appear to be valid');
         correct = false;
     };
 
@@ -53,5 +52,5 @@ function Validate() {
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
-
+}
 $('#idCheck').submit(Validate);
