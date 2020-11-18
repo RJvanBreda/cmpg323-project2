@@ -22,7 +22,7 @@ function Validate() {
         correct = false;
     }
 
-    // ID
+    // ID 
     var citzenship = parseInt(IdentNR.substring(10, 11)) == 0 ? "Yes" : "No";
 
 
